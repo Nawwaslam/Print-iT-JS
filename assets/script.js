@@ -35,8 +35,6 @@ arrow_right.addEventListener('click', () => {
 	tag_line.innerHTML = `${slides[inprogress].tagLine}`
 
 	handleCircle()
-	// dots.forEach(dot => dot.classList.remove('dot_selected'));
-	// dots[inprogress].classList.add('dot_selected');
 	if (inprogress >= slides.length - 1) {
 		inprogress = 0
 	}
@@ -54,7 +52,6 @@ arrow_left.addEventListener('click', () => {
 	tag_line.innerHTML = `${slides[inprogress].tagLine}`
 
 	handleCircle()
-	// inprogress = inprogress == 0 ? slides.length - 1 : inprogress--;
 	if (inprogress == 0) {
 		inprogress = slides.length - 1
 	}
@@ -62,3 +59,32 @@ arrow_left.addEventListener('click', () => {
 		inprogress--;
 	}
 });
+
+// Cercle récupérer sur internet //
+
+const circle = [
+	`<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8"/></svg>`,
+	`<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2"/></svg>`
+]
+
+// Dot mobil //
+
+function handleCircle() {
+	class_dots.innerHTML = ""
+	for (let i = 0; i < slides.length; i++) {
+		const circleElt = document.createElement("div")
+		circleElt.className = "dot-w"
+		if (inprogress == i) {
+			circleElt.innerHTML = circle[1]
+
+		} else {
+			circleElt.innerHTML = circle[0]
+		}
+
+		class_dots.append(circleElt)
+	}
+
+}
+
+
+handleCircle()
